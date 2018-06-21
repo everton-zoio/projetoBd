@@ -442,6 +442,15 @@ table.dataTable thead .sorting:after {
   .modal-footer {
       background-color: #f9f9f9;
   }
+  .modal-header1, .close1 {
+      background-color: #000;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer1 {
+      background-color: #f9f9f9;
+  }
 /* Chat qwers */
 .qwer {
     border: 2px solid #dedede;

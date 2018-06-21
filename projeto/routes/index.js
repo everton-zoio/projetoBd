@@ -9,7 +9,9 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });
-
+router.get('/cadastro', function(req, res, next) {
+  res.render('cadastro', { title: 'Express' });
+});
 router.get('/tables', function(req, res, next) {
   res.render('tables', { title: 'Express' });
 });
