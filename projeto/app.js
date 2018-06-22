@@ -1,16 +1,15 @@
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var path = require('path');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 //var cadRouter = require("./routes/cadastro");
 global.db = require("./database/database");
 var app = express();
-
-global.logged = false;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +20,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'userTT',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: new Date(Date.now() + (60 * 1000 * 15)) }
+}));
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
