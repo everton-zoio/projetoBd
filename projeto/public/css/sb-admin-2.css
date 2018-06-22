@@ -443,13 +443,32 @@ table.dataTable thead .sorting:after {
       background-color: #f9f9f9;
   }
   .modal-header1, .close1 {
-      background-color: #000;
+      background-color: #5cb85c;
       color:white !important;
       text-align: center;
       font-size: 30px;
   }
   .modal-footer1 {
-      background-color: #f9f9f9;
+      background-color: #5cb85c;
+  }
+
+  .modal-header2, .close2 {
+      background-color: #f0ad4e;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer2 {
+      background-color: #f0ad4e;
+  }
+  .modal-header3, .close3 {
+      background-color: #d9534f;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer3 {
+      background-color: #d9534f;
   }
 /* Chat qwers */
 .qwer {
@@ -499,4 +518,15 @@ table.dataTable thead .sorting:after {
 .time-left {
     float: left;
     color: #999;
+}
+
+.pointer {
+  color: #337ab7;
+  cursor: pointer;
+}
+
+.float { 
+  position:fixed; 
+  bottom:5%; 
+  right:2%;
 }
