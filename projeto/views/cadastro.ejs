@@ -3,7 +3,7 @@
 
 <head>
 
-    <title> Login | Rede Social Academica </title>
+    <title> Cadastro | Rede Social Academica </title>
     <% include partials/head %>
 
 </head>
@@ -15,16 +15,16 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Paina de Cadastro</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form role="form" method="POST">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Nome" name="nome" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="ra" type="number">
+                                    <input class="form-control" placeholder="E-mail" name="ra" type="text">
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
@@ -35,7 +35,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="/" class="btn btn-lg btn-info btn-block">Login</a>
+                                <button type="submit" class="btn btn-lg btn-info btn-block">Login</button>
                             </fieldset>
                         </form>
                     </div>
@@ -45,16 +45,16 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="./vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="./vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="./js/sb-admin-2.js"></script>
 
 </body>
 
