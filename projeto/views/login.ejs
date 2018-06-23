@@ -33,7 +33,10 @@
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <% if(erro){%>
-                                    <span class="danger"><%= erro %></span>
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <%= erro %>
+                                    </div>
                                 <%}%>
                                 <button type="submit" class="btn btn-lg btn-info btn-block">Login</button>
                             </fieldset>
@@ -55,6 +58,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="./js/sb-admin-2.js"></script>
+
 
 </body>
 
