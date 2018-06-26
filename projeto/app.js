@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   secret: 'userTT',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: { maxAge: new Date(Date.now() + (60 * 1000 * 15)) }
 }));

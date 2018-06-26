@@ -527,6 +527,7 @@ table.dataTable thead .sorting:after {
 
 .float { 
   position:fixed; 
+  z-index: 1;
   bottom:5%; 
   right:2%;
 }

@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 
 router.get("/sair", function(req, res, next){
   logged = false;
-  res.redirect("/lo");
+  res.redirect("/login");
 });
 router.get("/index", function(req, res, next){
   res.redirect("/");
