@@ -75,8 +75,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`chat Global` (
   `UsuarioId` VARCHAR(10) NOT NULL,
   `mensagem` TEXT(500) NOT NULL,
-  `data` DATETIME NOT NULL,
-  PRIMARY KEY (`UsuarioId`),
+  `data` DATE NOT NULL,
+  PRIMARY KEY (`UsuarioId`, `data`),
   CONSTRAINT `fk_chat Global_1`
     FOREIGN KEY (`UsuarioId`)
     REFERENCES `mydb`.`Usuario` (`RA`)
@@ -134,26 +134,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Turma` (
   `idTurma` VARCHAR(10) NOT NULL,
-  PRIMARY KEY (`idTurma`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`cria`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`cria` (
   `idProfessor` VARCHAR(10) NOT NULL,
-  `CodTurma` VARCHAR(10) NOT NULL,
-  PRIMARY KEY (`CodTurma`, `idProfessor`),
-  INDEX `fk_cria_1_idx` (`idProfessor` ASC),
-  CONSTRAINT `fk_cria_1`
+  PRIMARY KEY (`idTurma`, `idProfessor`),
+  INDEX `fk_Turma_1_idx` (`idProfessor` ASC),
+  CONSTRAINT `fkProf`
     FOREIGN KEY (`idProfessor`)
     REFERENCES `mydb`.`Professor` (`RA`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cria_2`
-    FOREIGN KEY (`CodTurma`)
-    REFERENCES `mydb`.`Turma` (`idTurma`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -184,13 +170,21 @@ ENGINE = InnoDB;
 -- Table `mydb`.`duvidas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`duvidas` (
+  `IdDuvida` INT NOT NULL AUTO_INCREMENT,
   `idTurma` VARCHAR(10) NOT NULL,
-  `IdDuvida` INT NOT NULL,
   `duvida` TEXT(500) NOT NULL,
-  PRIMARY KEY (`idTurma`, `IdDuvida`),
+  `data` DATE NOT NULL,
+  `idAluno` VARCHAR(10) NOT NULL,
+  PRIMARY KEY (`IdDuvida`),
+  INDEX `fk_duvidas_2_idx` (`idAluno` ASC),
   CONSTRAINT `fk_duvidas_1`
     FOREIGN KEY (`idTurma`)
     REFERENCES `mydb`.`Turma` (`idTurma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_duvidas_2`
+    FOREIGN KEY (`idAluno`)
+    REFERENCES `mydb`.`Aluno` (`RA`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -200,14 +194,21 @@ ENGINE = InnoDB;
 -- Table `mydb`.`respostas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`respostas` (
-  `idResposta` INT NOT NULL AUTO_INCREMENT,
+  `idResposta` INT NOT NULL,
+  `idTurma` VARCHAR(10) NOT NULL,
   `IdDuvida` INT NOT NULL,
   `resposta` TEXT(500) NOT NULL,
-  PRIMARY KEY (`idResposta`, `IdDuvida`),
+  `data` DATE NOT NULL,
+  PRIMARY KEY (`idTurma`, `IdDuvida`, `data`),
   INDEX `fk_respostas_1_idx` (`IdDuvida` ASC),
   CONSTRAINT `fk_respostas_1`
     FOREIGN KEY (`IdDuvida`)
     REFERENCES `mydb`.`duvidas` (`IdDuvida`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_respostas_2`
+    FOREIGN KEY (`idTurma`)
+    REFERENCES `mydb`.`Turma` (`idTurma`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -9,9 +9,9 @@ router.get('/', function(req, res, next) {
   }
   var sql = "SELECT * FROM `chat Global` ORDER BY data DESC";
   db.query(sql, function(err, rows){
-    console.log(rows);
     res.render("index", {
-      usuario: req.session.nome
+      usuario: req.session.nome,
+      chatG: rows
     });
   });
 });
