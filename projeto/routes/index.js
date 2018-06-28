@@ -7,19 +7,20 @@ router.get('/', function(req, res, next) {
     res.redirect("/login");
     return;
   }
-  res.render("index", {
-    usuario: req.session.nome
+  var sql = "SELECT * FROM `chat Global` ORDER BY data DESC";
+  db.query(sql, function(err, rows){
+    console.log(rows);
+    res.render("index", {
+      usuario: req.session.nome
+    });
   });
 });
 
-router.get("/sair", function(req, res, next){
-  logged = false;
-  res.redirect("/login");
-});
 router.get("/index", function(req, res, next){
   res.redirect("/");
 });
 
+/* Login */
 router.get('/login', function(req, res, next) {
   res.render('login', {erro: ""});
 });
@@ -35,7 +36,6 @@ router.post("/login", function(req, res){
     if(result.length){
       req.session.usuario = result[0].RA;
       req.session.nome = result[0].Nome;
-      console.log("Usuario encontrado.\nUsuário:" + result[0].Nome);
       res.redirect("/");
       return;
     }
@@ -44,9 +44,17 @@ router.post("/login", function(req, res){
   });
 });
 
+/* Logout */
+router.get("/sair", function(req, res, next){
+  logged = false;
+  res.redirect("/login");
+});
+
+/* Cadastro */
 router.get('/cadastro', function(req, res, next) {
   res.render('cadastro', {erro: null});
 });
+
 router.post("/cadastro", function(req, res, next){
   var body = req.body;
   var sql = "INSERT INTO Usuario VALUES ('"+ body.ra + "', '" + body.nome + "', '" + body.password + "')";
