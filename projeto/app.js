@@ -25,12 +25,11 @@ app.use(session({
   secret: 'userTT',
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: new Date(Date.now() + (60 * 1000 * 15)) }
+  cookie: { maxAge: new Date(Date.now() + (60 * 1000 * 120)) }
 }));
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
-//app.use("/cadastro", cadRouter);
 app.use('/chatG', chatRouter);
 
 // catch 404 and forward to error handler

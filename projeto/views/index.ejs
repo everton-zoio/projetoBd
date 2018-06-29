@@ -240,26 +240,46 @@
                         <form action="/chatG" method="POST">
                             <div class="form-group">
                                 <label>Text area</label>
-                                <textarea class="form-control" rows="3" cols="6" name="txt" maxlength="500"></textarea>
+                                <textarea class="form-control" rows="5" cols="6" name="txt" maxlength="500" style="resize: none"></textarea>
                             </div>
                             <button type="submit" class="btn btn-default">Submit Button</button>
                         </form>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <ul class="timeline">
-                               <%for(var i = 0; i < chatG.length; i++){%>
-                                <li>
-                                    <div class="<% if(i % 2 == 0) {%><%="timeline-badge"%> <%} else {%> <%="timeline-inverted"%> <%}%>"><i class="fa fa-check"></i>
+                               <%for(var i = 0, c = 0; i < chatG.length; i++){%>
+                                <% if(c == 0){ c++;%>
+                                <li class="timeline-inverted">
+                                <%} else{ c = 0; %>
+                                    <li>
+                                <%}%>
+                                <!--
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
                                     </div>
+                                    -->
                                     <div class="timeline-panel">
                                         <div class="timeline-heading">
-                                            <h4 class="timeline-title"><%=chatG[i].usuario%></h4>
-                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%chatG[i].data %></small>
+                                            <div class="timeline-title"><%=chatG[i].Nome%></div>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%=Math.round(((Date.now()) - (chatG[i].data))/1000) + " seconds Ago."%></small>
                                             </p>
                                         </div>
                                         <div class="timeline-body">
                                             <p><%=chatG[i].mensagem%></p>
                                         </div>
+                                        <% if(chatG[i].UsuarioId == login){ %>
+                                            <div class="btn-group" style="float:right">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="/chatG/DUsr=<%= chatG[i].UsuarioId + "&data=" + chatG[i].data %>">Deletar Mensagem</a>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">Alterar mensagem</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        <%} %>
                                     </div>
                                 </li>
                             <%}%>

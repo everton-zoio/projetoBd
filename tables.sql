@@ -7,7 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-DROP DATABASE mydb;
+DROP DATABASE IF EXISTS mydb;
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
