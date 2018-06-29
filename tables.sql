@@ -7,7 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-
+DROP DATABASE mydb;
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
@@ -75,7 +75,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`chat Global` (
   `UsuarioId` VARCHAR(10) NOT NULL,
   `mensagem` TEXT(500) NOT NULL,
-  `data` DATE NOT NULL,
+  `data` DATETIME NOT NULL,
   PRIMARY KEY (`UsuarioId`, `data`),
   CONSTRAINT `fk_chat Global_1`
     FOREIGN KEY (`UsuarioId`)

@@ -1,3 +1,0 @@
-Visualizar chat global
-
-	rodar o programa, fazer login e visualizar as mensagens no chat

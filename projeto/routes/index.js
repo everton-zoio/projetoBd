@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
   }
   var sql = "SELECT * FROM `chat Global` ORDER BY data DESC";
   db.query(sql, function(err, rows){
+    console.log(rows);
     res.render("index", {
       usuario: req.session.nome,
       chatG: rows
@@ -27,8 +28,8 @@ router.get('/login', function(req, res, next) {
 
 router.post("/login", function(req, res){
   var body = req.body;
-  var sql = "SELECT * FROM Usuario WHERE RA=? AND PASSWORD=?";
-  db.query(sql,[body.ra,body.password], function(err, result, field){
+  var sql = "SELECT * FROM Usuario WHERE RA='" + body.ra + "' AND PassWord='" + body.password + "';";
+  db.query(sql, function(err, result, field){
     if(err){
       console.log(err);
       return;
