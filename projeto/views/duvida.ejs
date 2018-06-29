@@ -4,7 +4,7 @@
 <head>
     <title> Duvida | Rede Social Academica </title>
     <% include partials/head %>
-
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
@@ -19,44 +19,28 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-question fa-fw"></i> 
+                    <div class="panel panel-default back">
+                        <div class="panel-heading fon">
+                            Questione Tudo e Todos !
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <ul class="timeline">
                                 <li>
                                     <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Qual sua Dúvida ??</h4>
-                                        </div>
+                                        
                                         <div class="timeline-body">
-                                            <button type="button" class="btn btn-default btn-lg label-info" id="myBtn">Perguntar</button>
-                                            <!-- Modal -->
-                                                  <div class="modal fade" id="myModal" role="dialog">
-                                                    <div class="modal-dialog">
-                                                    
-                                                      <!-- Modal content-->
-                                                      <div class="modal-content">
-                                                        <div class="modal-header" style="padding:35px 50px;">
-                                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                          <h4><span class="glyphicon glyphicon-lock"></span> Duvida</h4>
-                                                        </div>
-                                                        <div class="modal-body" style="padding:40px 50px;">
-                                                          <form role="form">
-                                                            <div class="form-group">
-                                                              <label for="usrname"><span class=""></span> Faça sua Perguntar</label>
-                                                              <input type="text" class="form-control" id="duvida" placeholder="Escreva sua Dúvida akih">
-                                                            </div>
-                                                          </form>
-                                                          <a class="btn btn-primary btn-block label-success" href="duvida">Perguntar</a>
-                                                        </div>
 
-                                                      </div>
-                                                    
-                                                    </div>
-                                                  </div>
+                                        <div class="wrap-input100 validate-input" data-validate = "">
+                                            <input class="input100" type="text" name="duvida" placeholder="Qual sua Dúvida ?">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+
+                                            <button type="button" class="login100-form-btn" id="myBtn">Perguntar</button>
+                                            
                                         </div>
                                     </div>
                                 </li>
@@ -126,51 +110,7 @@
                                             <a class="d-inline-block" href="#">
                                                 <i class="fa fa-fw fa-share"></i>Share</a>
                                         </div>
-                                        <hr class="my-0">
-                                        <div class="card-body small bg-faded">
-                                            <div class="media">
-                                                <img class="d-flex mr-3" src="../imagem/icon_brain_round.webp" alt="">
-                                                <div class="media-body">
-                                                    <h6 class="mt-0 mb-1"><a href="#">John Smith</a></h6>Algoritmo:
-                                                          <p>início 
-                                                                 mover o disco 1 para a haste b 
-                                                                 mover o disco 2 para a haste c 
-                                                                 mover o disco 1 para a haste c 
-                                                                 mover o disco 3 para a haste b 
-                                                                 mover o disco 1 para a haste a 
-                                                                 mover o disco 2 para a haste b 
-                                                                 mover o disco 1 para a haste b 
-                                                          fim</p> 
-                                                    <ul class="list-inline mb-0">
-                                                        <li class="list-inline-item">
-                                                            <a href="#">Like</a>
-                                                        </li>
-                                                        <li class="list-inline-item">·</li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#">Reply</a>
-                                                        </li>
-                                                    </ul>
-                                                <div class="media mt-3">
-                                                    <a class="d-flex pr-3" href="#">
-                                                        <img src="http://placehold.it/45x45" alt="">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <h6 class="mt-0 mb-1"><a href="#">David Miller</a></h6>Obrigado <3!
-                                                        <ul class="list-inline mb-0">
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Like</a>
-                                                            </li>
-                                                        <li class="list-inline-item">·</li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#">Reply</a>
-                                                      </li>
-                                                    </ul>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="card-footer small text-muted">Posted 32 mins ago</div>
+
                                     </div>
                                 </li>
                                 <li class="timeline-inverted">
