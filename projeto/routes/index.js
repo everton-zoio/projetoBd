@@ -7,11 +7,11 @@ router.get('/', function(req, res, next) {
     res.redirect("/login");
     return;
   }
-  var sql = "SELECT * FROM `chat Global` C, Usuario U WHERE U.RA = C.UsuarioId ORDER BY data DESC;";
+  var sql = "SELECT * FROM `chat Global` ORDER BY data DESC";
   db.query(sql, function(err, rows){
+    console.log(rows);
     res.render("index", {
       usuario: req.session.nome,
-      login: req.session.usuario,
       chatG: rows
     });
   });
@@ -28,33 +28,26 @@ router.get('/login', function(req, res, next) {
 
 router.post("/login", function(req, res){
   var body = req.body;
-  var sql = "SELECT * FROM Usuario WHERE RA='" + body.ra + "';";
+  var sql = "SELECT * FROM Usuario WHERE RA='" + body.ra + "' AND PassWord='" + body.password + "';";
   db.query(sql, function(err, result, field){
     if(err){
       console.log(err);
       return;
     }
     if(result.length){
-        if(result[0].PassWord == body.password){
-        req.session.usuario = result[0].RA;
-        req.session.nome = result[0].Nome;
-        res.redirect("/");
-        return;
-      }
-      res.render("login", {
-        erro: "Usuário ou Senha incorreta!"
-      })
+      req.session.usuario = result[0].RA;
+      req.session.nome = result[0].Nome;
+      res.redirect("/");
+      return;
     }
-    res.render("login", {
-      erro: "Usuário não encontrado"
-    });
+    res.render("login", {erro: "Usuário não encontrado"});
 
   });
 });
 
 /* Logout */
 router.get("/sair", function(req, res, next){
-  req.session.destroy();
+  logged = false;
   res.redirect("/login");
 });
 
@@ -65,50 +58,35 @@ router.get('/cadastro', function(req, res, next) {
 
 router.post("/cadastro", function(req, res, next){
   var body = req.body;
-  if(body.password == body['repeat-password']){
-    let sql = "INSERT INTO Usuario VALUES ('"+ body.usuario + "', '" + body.password + "', '" + body.nome + "')";
-    db.query(sql, function(err, result, field){
-      if(err){
-        console.log(err);
-        res.render("cadastro", {
-          erro: true
-        });
-        return;
-      }
-      req.session.usuario = body.ra;
-      req.session.nome = body.nome;
-      res.redirect("/");
-    });
-  }
-  else{
-    res.render("cadastro", {
-      erro: "As senhas não conferem!"
-    });
-  }
+  var sql = "INSERT INTO Usuario VALUES ('"+ body.ra + "', '" + body.nome + "', '" + body.password + "')";
+  db.query(sql, function(err, result, field){
+    if(err){
+      console.log(err);
+      res.render("cadastro", {
+        erro: true
+      });
+      return;
+    }
+    req.session.usuario = body.ra;
+    req.session.nome = body.nome;
+    res.redirect("/");
+  });
 });
 
 router.get('/tables', function(req, res, next) {
-  if(req.session.usuario == null){
-    res.redirect("/login");
-    return;
-  }
   res.render('tables', { title: 'Express' });
 });
 
 router.get('/blank', function(req, res, next) {
-  if(req.session.usuario == null){
-    res.redirect("/login");
-    return;
-  }
   res.render('blank', { title: 'Express' });
 });
 
 router.get('/duvida', function(req, res, next) {
-  if(req.session.usuario == null){
-    res.redirect("/login");
-    return;
-  }
   res.render('duvida', { title: 'Express' });
+});
+
+router.get("/cadaTurm", function(req, res, next){
+  res.render('cadaTurm', { title: 'Express' });
 });
 
 module.exports = router;
